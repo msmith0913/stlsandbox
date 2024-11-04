@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	  <link rel="stylesheet" href="https://submissionstrategies.com/css/r2.css" />
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
+	 <link rel="stylesheet" href="https://submissionstrategies.com/css/L.Control.Layers.Tree.css"/>
+	 <script src="https://cdnjs.cloudflare.com/ajax/libs/OverlappingMarkerSpiderfier-Leaflet/0.2.6/oms.min.js"></script>
+<style>
+		#map {
+			position: relative;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			width: 80%;
+			height: 600px;
+		}
+	</style>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Ride Every Route: Exploring the St. Louis Region through Public Transit</title>
+</head>
+<body>
+	<script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-omnivore/v0.2.0/leaflet-omnivore.min.js'></script>
+    <h1>Ride Every Route</h1><br>
+    <h2>Exploring the St. Louis Region through Public Transit</h2>
+
+<div style="margin: auto" id = "map"></div>
+	<script>
+		var map = L.map('map', {
+			center: [38.62718883493524, -90.17973025660817],
+			zoom: 9
+		});
+
+		L.tileLayer('https://api.maptiler.com/maps/topo/{z}/{x}/{y}.png?key=4CI3hvSGGwgJXODif6KH', {attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>',
+		}).addTo(map);
+
+          var metroBus;
+          var metroLink;
+          var mct;
+
+          function getColor(status) {
+  return status = "Not ridden" ? '#ec7063' :
+    status = "Partially ridden"  ? '#f5b041' :
+    status = "Fully ridden"  ? '#45b39d' ;
+      }
+function getStyle(feature) {
+          return {
+              color: getColor(feature.properties.status),
+          };
+      }
+          const geojson = 'https://raw.githubusercontent.com/msmith0913/stlsandbox/refs/heads/main/rideeveryroute.geojson'
+
+	.addTo(map);
+
+	</script>
+
+</script>
+</body>
